@@ -29,6 +29,7 @@ public class Element {
     }
 
     public void setNumber(int number) {
+        Validator.validateNumber(number);
         this.number = number;
     }
 
