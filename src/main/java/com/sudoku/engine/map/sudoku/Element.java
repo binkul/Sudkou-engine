@@ -6,7 +6,15 @@ import java.util.List;
 public class Element {
     private int number = 0;
     private List<Integer> candidates = Arrays.asList(1, 2, 3, 4, 5, 6, 7, 8, 9);
-    private Colors fontColor = Colors.BLACK;
+    private FontColor fontColor = FontColor.BLACK;
+
+    public Element() {}
+
+    public Element(int number, List<Integer> candidates, FontColor fontColor) {
+        this.number = number;
+        this.candidates = candidates;
+        this.fontColor = fontColor;
+    }
 
     public void removeCandidate(Integer candidate) {
         candidates.remove(candidate);
@@ -24,7 +32,15 @@ public class Element {
         return candidates;
     }
 
-    public Colors getFontColor() {
+    public int getFirstCandidate() {
+        return candidates.get(0);
+    }
+
+    public int getCandidatesSize() {
+        return candidates.size();
+    }
+
+    public FontColor getFontColor() {
         return fontColor;
     }
 
@@ -33,7 +49,7 @@ public class Element {
         this.number = number;
     }
 
-    public void setFontColor(Colors fontColor) {
+    public void setFontColor(FontColor fontColor) {
         this.fontColor = fontColor;
     }
 

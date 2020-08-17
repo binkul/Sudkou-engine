@@ -1,8 +1,6 @@
 package com.sudoku.engine.map.sudoku;
 
-import java.util.HashMap;
-import java.util.Map;
-import java.util.TreeMap;
+import java.util.*;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 import java.util.stream.Stream;
@@ -40,7 +38,7 @@ public class Sudoku {
                 .collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue));
     }
 
-    public Map<Position, Element> getOrderedRow(int row) {
+    Map<Position, Element> getOrderedRow(int row) {
         return new TreeMap<>(getRow(row));
     }
 
@@ -52,7 +50,7 @@ public class Sudoku {
                 .collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue));
     }
 
-    public Map<Position, Element> getOrderedColumn(int column) {
+    Map<Position, Element> getOrderedColumn(int column) {
         return new TreeMap<>(getColumn(column));
     }
 
@@ -75,11 +73,27 @@ public class Sudoku {
                 .collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue, (a, b) -> a));
     }
 
-    public Map<Position, Element> getOrderSection(int row, int column) {
-        return new TreeMap<>(getSection(row, column));
+    public Sudoku getDeepCopy() {
+        Sudoku sudokuCopy = new Sudoku();
+        Map<Position, Element> fieldCopy = new HashMap<>();
+
+        for (Map.Entry<Position, Element> entry : field.entrySet()) {
+            int number = entry.getValue().getNumber();
+            List<Integer> candidates = new ArrayList<>(entry.getValue().getCandidates());
+            FontColor fontColor = entry.getValue().getFontColor();
+            Position position = new Position(entry.getKey().getRow(), entry.getKey().getColumn());
+            Element element = new Element(number, candidates, fontColor);
+            fieldCopy.put(position, element);
+        }
+        sudokuCopy.setField(fieldCopy);
+        return sudokuCopy;
     }
 
     public Map<Position, Element> getField() {
         return field;
+    }
+
+    private void setField(Map<Position, Element> field) {
+        this.field = field;
     }
 }
