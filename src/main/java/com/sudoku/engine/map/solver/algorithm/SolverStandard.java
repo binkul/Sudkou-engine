@@ -27,6 +27,22 @@ public class SolverStandard extends SolverSingle {
     }
 
     private boolean addUniqueFromExisting(Map<Position, Element> elements, Element element, Set<Integer> existingNumbers) {
+        final Boolean[] result = {false};
+        findUniqueCandidates(elements)
+                .stream()
+                .filter(element::containCandidate)
+                .filter(i -> !existingNumbers.contains(i))
+                .findFirst()
+                .ifPresent(i -> {
+                        element.setNumber(i);
+                        element.setFontColor(FontColor.GREEN);
+                        result[0] = true;
+                });
+        return result[0];
+
+
+
+/*
         List<Integer> unique = findUniqueCandidates(elements);
         for (Integer number : unique) {
             if (element.containCandidate(number) && !existingNumbers.contains(number)) {
@@ -36,6 +52,7 @@ public class SolverStandard extends SolverSingle {
             }
         }
         return false;
+*/
     }
 
     private List<Integer> findUniqueCandidates(Map<Position, Element> elements) {
