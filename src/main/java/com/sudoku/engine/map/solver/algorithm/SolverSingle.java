@@ -18,7 +18,7 @@ public class SolverSingle {
         return addNumber(element);
     }
 
-    Set<Integer> getNumbersFromSudokuSection(Sudoku sudoku, int row, int column) {
+    public Set<Integer> getNumbersFromSudokuSection(Sudoku sudoku, int row, int column) {
         return sudoku.getSudokuSection(row, column)
                 .values()
                 .stream()

@@ -1,11 +1,12 @@
 package com.sudoku.engine.map.sudoku;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
 public class Element {
     private int number = 0;
-    private List<Integer> candidates = Arrays.asList(1, 2, 3, 4, 5, 6, 7, 8, 9);
+    private List<Integer> candidates = new ArrayList<>(Arrays.asList(1, 2, 3, 4, 5, 6, 7, 8, 9));
     private FontColor fontColor = FontColor.BLACK;
 
     public Element() {}
@@ -16,8 +17,8 @@ public class Element {
         this.fontColor = fontColor;
     }
 
-    public void removeCandidate(Integer candidate) {
-        candidates.remove(candidate);
+    public void removeCandidate(Integer number) {
+        candidates.remove(number);
     }
 
     public boolean containCandidate(Integer candidate) {
