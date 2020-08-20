@@ -33,6 +33,10 @@ public class Element {
         return candidates;
     }
 
+    public Integer getCandidate(int index) {
+        return candidates.get(index);
+    }
+
     public int getFirstCandidate() {
         return candidates.get(0);
     }

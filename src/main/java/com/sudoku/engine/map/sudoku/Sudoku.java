@@ -9,7 +9,7 @@ public class Sudoku {
     private Map<Position, Element> field;
 
     public Sudoku() {
-        field = createField();
+        field = new TreeMap<>(createField());
     }
 
     private Map<Position, Element> createField() {
@@ -21,37 +21,30 @@ public class Sudoku {
 
     private Map<Position, Element> createRow(int row) {
         return IntStream.rangeClosed(1, Data.SIZE)
-                .collect(HashMap::new, (m, i) -> m.put(new Position(row, i), new Element()), Map::putAll);
+                .collect(TreeMap::new, (m, i) -> m.put(new Position(row, i), new Element()), Map::putAll);
     }
 
     public Element getElement(int row, int column) {
         Validator.validateRow(row);
         Validator.validateColumn(column);
+
         return field.get(new Position(row, column));
     }
 
     public Map<Position, Element> getRow(int row) {
         Validator.validateRow(row);
 
-        return field.entrySet().stream()
+        return new TreeMap<>(field.entrySet().stream()
                 .filter(i -> i.getKey().getRow() == row)
-                .collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue));
-    }
-
-    Map<Position, Element> getOrderedRow(int row) {
-        return new TreeMap<>(getRow(row));
+                .collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue)));
     }
 
     public Map<Position, Element> getColumn(int column) {
         Validator.validateColumn(column);
 
-        return field.entrySet().stream()
+        return new TreeMap<>(field.entrySet().stream()
                 .filter(i -> i.getKey().getColumn() == column)
-                .collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue));
-    }
-
-    Map<Position, Element> getOrderedColumn(int column) {
-        return new TreeMap<>(getColumn(column));
+                .collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue)));
     }
 
     public Map<Position, Element> getSection(int row, int column) {
@@ -73,7 +66,7 @@ public class Sudoku {
                 .collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue, (a, b) -> a));
     }
 
-    public Sudoku getDeepCopy() {
+    public Sudoku deepCopy() {
         Sudoku sudokuCopy = new Sudoku();
         Map<Position, Element> fieldCopy = new HashMap<>();
 
@@ -95,5 +88,20 @@ public class Sudoku {
 
     private void setField(Map<Position, Element> field) {
         this.field = field;
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder result = new StringBuilder();
+
+        for (int i = 1; i <= Data.SIZE; i++) {
+            result.append(getRow(i)
+                    .values()
+                    .stream()
+                    .map(Element::getNumber)
+                    .map(String::valueOf)
+                    .collect(Collectors.joining("|", "|", "|\n")));
+        }
+        return result.toString();
     }
 }

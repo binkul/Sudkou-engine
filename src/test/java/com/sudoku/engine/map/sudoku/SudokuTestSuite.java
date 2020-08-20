@@ -67,7 +67,7 @@ public class SudokuTestSuite {
         // Given
         int row = 5;
         Sudoku sudoku = new Sudoku();
-        Map<Position, Element> elements = sudoku.getOrderedRow(row);
+        Map<Position, Element> elements = sudoku.getRow(row);
 
         // When
         System.out.println("Test of one sorted row: " + elements.size());
@@ -109,7 +109,7 @@ public class SudokuTestSuite {
         // Given
         int column = 7;
         Sudoku sudoku = new Sudoku();
-        Map<Position, Element> elements = sudoku.getOrderedColumn(column);
+        Map<Position, Element> elements = sudoku.getColumn(column);
 
         // When
         System.out.println("Test of one sorted column: " + elements.size());
