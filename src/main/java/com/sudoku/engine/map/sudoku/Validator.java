@@ -13,4 +13,13 @@ public class Validator {
     public static void validateNumber(int number) {
         if (number < 1 || number > Data.MAX_NUMBER) throw new IllegalArgumentException("Number should be between 1-9");
     }
+
+    public static boolean isFilled(Sudoku sudoku) {
+        return sudoku.getField()
+                .values()
+                .stream()
+                .map(Element::getNumber)
+                .noneMatch(i -> i == Data.EMPTY);
+    }
+
 }

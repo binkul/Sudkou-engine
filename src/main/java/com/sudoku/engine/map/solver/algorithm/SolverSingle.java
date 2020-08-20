@@ -1,9 +1,8 @@
 package com.sudoku.engine.map.solver.algorithm;
 
-import com.sudoku.engine.map.exception.SudokuUnsolvableException;
-import com.sudoku.engine.map.sudoku.FontColor;
 import com.sudoku.engine.map.sudoku.Data;
 import com.sudoku.engine.map.sudoku.Element;
+import com.sudoku.engine.map.sudoku.FontColor;
 import com.sudoku.engine.map.sudoku.Sudoku;
 
 import java.util.Set;

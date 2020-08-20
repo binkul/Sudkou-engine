@@ -56,7 +56,7 @@ public class SolverBackTrack {
                     element = findFirstEmpty(sudokuCopy);
                     putOnStack(stack, 0);
             }
-            result = solver.runStandard(sudokuCopy);
+            result = solver.getSolverStandard().process(sudokuCopy);
         }
     }
 

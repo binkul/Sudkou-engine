@@ -31,6 +31,10 @@ public class Sudoku {
         return field.get(new Position(row, column));
     }
 
+    public Integer getNumber(int row, int column) {
+        return getElement(row, column).getNumber();
+    }
+
     public Map<Position, Element> getRow(int row) {
         Validator.validateRow(row);
 

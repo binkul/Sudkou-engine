@@ -11,13 +11,38 @@ import java.util.stream.Collectors;
 
 public class SolverStandard extends SolverSingle {
 
-    public Result process(Sudoku sudoku, int row, int column) {
-        Element element = sudoku.getElement(row, column);
-        if (element.getNumber() != Data.EMPTY) return Result.NONE;
+    public Result process(Sudoku sudoku) {
+        boolean repeat;
 
+        do {
+            repeat = false;
+            for (int row = 1; row <= Data.SIZE; row++) {
+                for (int column = 1; column <= Data.SIZE; column++) {
+                    Result result = getResult(sudoku, row, column);
+                    if (result == Result.ERROR) {
+                        return result;
+                    } else if (result == Result.ADDED) {
+                        repeat = true;
+                    }
+                }
+            }
+        } while (repeat);
+
+        return Validator.isFilled(sudoku) ? Result.FULL_FILLED : Result.NONE;
+    }
+
+    private Result getResult(Sudoku sudoku, int row, int column) {
+        if (sudoku.getNumber(row, column) == Data.EMPTY) {
+            return analyze(sudoku, row, column);
+        }
+        return Result.NONE;
+    }
+
+    private Result analyze(Sudoku sudoku, int row, int column) {
         Result result = super.process(sudoku, row, column);
         if (result != Result.NONE) return result;
 
+        Element element = sudoku.getElement(row, column);
         Set<Integer> existingNumbers = super.getNumbersFromSudokuSection(sudoku, row, column);
         if (addUniqueFromExisting(sudoku.getRow(row), element, existingNumbers)) return Result.ADDED;
         if (addUniqueFromExisting(sudoku.getColumn(column), element, existingNumbers)) return Result.ADDED;
