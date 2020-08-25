@@ -1,5 +1,4 @@
-com\sudoku\engine\map\sudoku\Colors.class
-com\sudoku\engine\map\sudoku\Element.class
-com\sudoku\engine\map\sudoku\Sudoku.class
 com\sudoku\engine\map\SudokuApplication.class
+com\sudoku\engine\map\sudoku\Sudoku.class
+com\sudoku\engine\map\sudoku\Element.class
 com\sudoku\engine\map\sudoku\Position.class

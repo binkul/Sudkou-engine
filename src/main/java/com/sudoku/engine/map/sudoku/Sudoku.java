@@ -64,6 +64,11 @@ public class Sudoku {
                 .collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue));
     }
 
+    public Map<Position, Element> getSection(int section) {
+        int[] map = {1, 4, 7};
+        return getSection(map[(section - 1) / Data.SECTION], map[(section - 1) % Data.SECTION]);
+    }
+
     public Map<Position, Element> getSudokuSection(int row, int column) {
         return Stream.of(getRow(row), getColumn(column), getSection(row, column))
                 .flatMap(i -> i.entrySet().stream())

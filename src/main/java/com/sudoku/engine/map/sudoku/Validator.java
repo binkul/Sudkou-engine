@@ -1,5 +1,9 @@
 package com.sudoku.engine.map.sudoku;
 
+import java.util.Map;
+import java.util.function.Function;
+import java.util.stream.Collectors;
+
 public class Validator {
 
     public static void validateRow(int row) {
@@ -20,6 +24,26 @@ public class Validator {
                 .stream()
                 .map(Element::getNumber)
                 .noneMatch(i -> i == Data.EMPTY);
+    }
+
+    public static boolean isCollision(Sudoku sudoku) {
+        for (int i = 1; i <= Data.SIZE; i++) {
+            if (isDuplicate(sudoku.getRow(i))) return true;
+            if (isDuplicate(sudoku.getColumn(i))) return true;
+            if (isDuplicate(sudoku.getSection(i))) return true;
+        }
+        return false;
+    }
+
+    private static boolean isDuplicate(Map<Position, Element> elements) {
+        return elements.values()
+                .stream()
+                .map(Element::getNumber)
+                .filter(i -> i != Data.EMPTY)
+                .collect(Collectors.groupingBy(Function.identity(), Collectors.counting()))
+                .values()
+                .stream()
+                .anyMatch(i -> i > 1);
     }
 
 }

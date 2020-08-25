@@ -1,9 +1,11 @@
 package com.sudoku.engine.map.solver;
 
+import com.sudoku.engine.map.exception.SudokuCollisionNumberException;
 import com.sudoku.engine.map.solver.algorithm.Result;
 import com.sudoku.engine.map.solver.algorithm.SolverBackTrack;
 import com.sudoku.engine.map.solver.algorithm.SolverStandard;
 import com.sudoku.engine.map.sudoku.Sudoku;
+import com.sudoku.engine.map.sudoku.Validator;
 
 public class Solver {
     private Sudoku sudoku;
@@ -17,6 +19,7 @@ public class Solver {
     }
 
     public void process() {
+        if (Validator.isCollision(sudoku)) throw new SudokuCollisionNumberException("There are the same numbers in row/column/section");
         solverStandard.process(sudoku);
         if (solverStandard.process(sudoku) != Result.FULL_FILLED) {
             solverBackTrack.process(sudoku);
