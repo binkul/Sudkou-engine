@@ -1,5 +1,6 @@
 package com.sudoku.engine.map.solver;
 
+import com.sudoku.engine.map.exception.SudokuCollisionNumberException;
 import com.sudoku.engine.map.sudoku.Data;
 import com.sudoku.engine.map.sudoku.Element;
 import com.sudoku.engine.map.sudoku.Sudoku;
@@ -160,6 +161,31 @@ public class SolverTestSuite {
         assertThat(81L, is(size));
         System.out.println("Filled position: " + size);
         System.out.println(solver.getSudoku());
+    }
+
+    /**
+     2 0 0 0 0 0 0 0 0
+     0 0 0 0 0 0 0 0 0
+     0 0 2 0 0 0 0 0 0
+     0 0 0 0 0 0 0 0 0
+     0 0 0 0 0 0 0 0 0
+     0 0 0 0 0 0 0 0 0
+     0 0 0 0 0 0 0 0 0
+     0 0 0 0 0 0 0 0 0
+     0 0 0 0 0 0 0 0 0
+     **/
+    @Test(expected = SudokuCollisionNumberException.class)
+    public void testSolveCollisionDetection() {
+        // Given
+        Sudoku sudoku = new Sudoku();
+        Solver solver = new Solver(sudoku);
+        sudoku.getElement(1,1).setNumber(2);
+        sudoku.getElement(3, 3).setNumber(2);
+
+        // When
+        solver.process();
+
+        // Then
     }
 
 }

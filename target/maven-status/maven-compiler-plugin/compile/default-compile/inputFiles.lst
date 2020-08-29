@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 D:\Jacek\Programy\IntelliJ\sudoku-engine\src\main\java\com\sudoku\engine\map\SudokuApplication.java
 D:\Jacek\Programy\IntelliJ\sudoku-engine\src\main\java\com\sudoku\engine\map\sudoku\Sudoku.java
 D:\Jacek\Programy\IntelliJ\sudoku-engine\src\main\java\com\sudoku\engine\map\exception\SudokuUnsolvableException.java
@@ -12,3 +13,20 @@ D:\Jacek\Programy\IntelliJ\sudoku-engine\src\main\java\com\sudoku\engine\map\sud
 D:\Jacek\Programy\IntelliJ\sudoku-engine\src\main\java\com\sudoku\engine\map\solver\algorithm\Result.java
 D:\Jacek\Programy\IntelliJ\sudoku-engine\src\main\java\com\sudoku\engine\map\sudoku\Validator.java
 D:\Jacek\Programy\IntelliJ\sudoku-engine\src\main\java\com\sudoku\engine\map\sudoku\Position.java
+=======
+D:\Dane\Programy\IntelliJ\Sudkou-engine\src\main\java\com\sudoku\engine\map\solver\algorithm\StackElement.java
+D:\Dane\Programy\IntelliJ\Sudkou-engine\src\main\java\com\sudoku\engine\map\sudoku\Data.java
+D:\Dane\Programy\IntelliJ\Sudkou-engine\src\main\java\com\sudoku\engine\map\solver\Solver.java
+D:\Dane\Programy\IntelliJ\Sudkou-engine\src\main\java\com\sudoku\engine\map\sudoku\Position.java
+D:\Dane\Programy\IntelliJ\Sudkou-engine\src\main\java\com\sudoku\engine\map\solver\algorithm\Result.java
+D:\Dane\Programy\IntelliJ\Sudkou-engine\src\main\java\com\sudoku\engine\map\solver\algorithm\SolverStandard.java
+D:\Dane\Programy\IntelliJ\Sudkou-engine\src\main\java\com\sudoku\engine\map\sudoku\Validator.java
+D:\Dane\Programy\IntelliJ\Sudkou-engine\src\main\java\com\sudoku\engine\map\solver\algorithm\SolverBackTrack.java
+D:\Dane\Programy\IntelliJ\Sudkou-engine\src\main\java\com\sudoku\engine\map\exception\SudokuUnsolvableException.java
+D:\Dane\Programy\IntelliJ\Sudkou-engine\src\main\java\com\sudoku\engine\map\sudoku\Sudoku.java
+D:\Dane\Programy\IntelliJ\Sudkou-engine\src\main\java\com\sudoku\engine\map\solver\algorithm\SolverSingle.java
+D:\Dane\Programy\IntelliJ\Sudkou-engine\src\main\java\com\sudoku\engine\map\sudoku\Element.java
+D:\Dane\Programy\IntelliJ\Sudkou-engine\src\main\java\com\sudoku\engine\map\SudokuApplication.java
+D:\Dane\Programy\IntelliJ\Sudkou-engine\src\main\java\com\sudoku\engine\map\sudoku\FontColor.java
+D:\Dane\Programy\IntelliJ\Sudkou-engine\src\main\java\com\sudoku\engine\map\exception\SudokuCollisionNumberException.java
+>>>>>>> 94786577dfb665e9f08203a68f6c86f43053d8b4
